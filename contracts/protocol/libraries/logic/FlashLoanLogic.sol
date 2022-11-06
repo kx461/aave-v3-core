@@ -188,7 +188,7 @@ library FlashLoanLogic {
 
     IFlashLoanSimpleReceiver receiver = IFlashLoanSimpleReceiver(params.receiverAddress);
     uint256 totalPremium = params.amount.percentMul(params.flashLoanPremiumTotal);
-    IAToken(reserve.aTokenAddress).transferUnderlyingTo(params.receiverAddress, params.amount);
+    IAToken(reserve.aTokenAddress).transferUnderlyingTo(reserveCache.aTokenAddress, params.amount);
 
     require(
       receiver.executeOperation(
@@ -247,7 +247,7 @@ library FlashLoanLogic {
       amountPlusPremium
     );
 
-    IAToken(reserveCache.aTokenAddress).handleRepayment(params.receiverAddress, amountPlusPremium);
+    IAToken(reserveCache.aTokenAddress).handleRepayment(reserveCache.aTokenAddress, amountPlusPremium);
 
     emit FlashLoan(
       params.receiverAddress,
