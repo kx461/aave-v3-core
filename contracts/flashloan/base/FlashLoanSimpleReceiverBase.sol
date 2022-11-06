@@ -9,7 +9,7 @@ import {IPool} from '../../interfaces/IPool.sol';
  * @author Aave
  * @notice Base contract to develop a flashloan-receiver contract.
  */
-abstract contract FlashLoanSimpleReceiverBase {
+contract FlashLoanSimpleReceiverBase {
   IPoolAddressesProvider public immutable override ADDRESSES_PROVIDER;
   IPool public immutable override POOL;
 
